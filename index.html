@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" class="page">
+
+   <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <meta name="theme-color" content="#111111">
+   <title>101 Окно</title>
+   <link rel="stylesheet" href="css/vendor.css">
+   <link rel="stylesheet" href="css/main.css">
+   <script defer src="js/main.js"></script>
+</head>
+
+   <body class="page__body">
+      <div class="site-container">
+         <header class="header">
+  <div class="popup storyes" id="storyboard">
+  <div class="popup__body">
+    <div class="popup__content">
+      <div class="story-btn prev">
+        <svg>
+          <use xlink:href="img/sprite.svg#arrow"></use>
+        </svg>
+      </div>
+      <div class="story-btn next">
+        <svg>
+          <use xlink:href="img/sprite.svg#arrow"></use>
+        </svg>
+      </div>
+      <!-- Главный свайпер (swiper__story) -->
+      <div class="swiper swiper__story">
+        <button class="btn-reset close-storyboard close__popup">
+          <div class="close-icon">
+            <img src="./img/close-icon.svg" alt="Крестик">
+          </div>
+        </button>
+        <div class="story-fragment-btn next"></div>
+        <div class="story-fragment-btn prev"></div>
+        <div class="swiper-wrapper">
+          <div class="swiper-slide slide__story">
+            <!-- Cвайперы (swiper__story-slide) внутри истории для разделения на фрагменты -->
+            <div class="swiper swiper__story-slide">
+              <div class="pagination-fragments"></div>
+              <div class="swiper-wrapper">
+                <div class="swiper-slide slide__story-fragment">
+                  <picture>
+                    <source srcset="./img/story-img-1.webp" type="image/webp">
+                    <img loading="lazy" src="./img/story-img-1.jpg" class="image" width="" height="" alt="">
+                  </picture>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide slide__story">
+            <div class="swiper swiper__story-slide">
+              <div class="pagination-fragments"></div>
+              <div class="swiper-wrapper">
+                <div class="swiper-slide slide__story-fragment">
+                  <picture>
+                    <source srcset="./img/story-img-2.webp" type="image/webp">
+                    <img loading="lazy" src="./img/story-img-2.jpg" class="image" width="" height="" alt="">
+                  </picture>
+                </div>
+                <div class="swiper-slide slide__story-fragment">
+                  <picture>
+                    <source srcset="./img/story-img-3.webp" type="image/webp">
+                    <img loading="lazy" src="./img/story-img-3.jpg" class="image" width="" height="" alt="">
+                  </picture>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide slide__story">
+            <div class="swiper swiper__story-slide">
+              <div class="pagination-fragments"></div>
+              <div class="swiper-wrapper">
+                <div class="swiper-slide slide__story-fragment">
+                  <video preload='metadata' src="/video/test-video.mp4" muted autoplay></video>
+                </div>
+                <div class="swiper-slide slide__story-fragment">
+                  <picture>
+                    <source srcset="./img/story-img-1.webp" type="image/webp">
+                    <img loading="lazy" src="./img/story-img-1.jpg" class="image" width="" height="" alt="">
+                  </picture>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide slide__story">
+            <div class="swiper swiper__story-slide">
+              <div class="pagination-fragments"></div>
+              <div class="swiper-wrapper">
+                <div class="swiper-slide slide__story-fragment">
+                  <picture>
+                    <source srcset="./img/story-img-1.webp" type="image/webp">
+                    <img loading="lazy" src="./img/story-img-1.jpg" class="image" width="" height="" alt="">
+                  </picture>
+                </div>
+                <div class="swiper-slide slide__story-fragment">
+                  <video preload='metadata' src="/video/test-video.mp4" muted autoplay></video>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide slide__story">
+            <div class="swiper swiper__story-slide">
+              <div class="pagination-fragments"></div>
+              <div class="swiper-wrapper">
+                <div class="swiper-slide slide__story-fragment">
+                  <video preload='metadata' src="/video/test-video.mp4" muted autoplay></video>
+                </div>
+                <div class="swiper-slide slide__story-fragment">
+                  <video preload='metadata' src="/video/test-video.mp4" muted autoplay></video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="container">
+    <div class="header__head">
+      <a href="#" class="head__link">Работа в 101 окно</a>
+      <a href="#" class="head__link">О нас</a>
+      <a href="#" class="head__link">Контакты</a>
+    </div>
+    <div class="header__head-border-bottom"></div>
+    <div class="header__container">
+      <div class="header__main-block">
+        <div class="header__logo">
+          <picture>
+            <source srcset="./img/logo.webp" type="image/webp">
+            <img loading="lazy" src="./img/logo.png" class="img-contain" width="250" height="40" alt="Логотип">
+          </picture>
+        </div>
+        <p class="header__delivery-text">Доставка в <button class="btn-reset select-sity"></button></p>
+        <a href="tel:+70000000000" class="header__phone-number">+7 (000-00) 0-00-00</a>
+      </div>
+      <div class="nav__container">
+        <div class="nav-logo">
+          <picture>
+            <source srcset="./img/foto.webp" type="image/webp">
+            <img loading="lazy" src="./img/foto.png" class="img-contain" width="36" height="36" alt="Логотип">
+          </picture>
+        </div>
+        <nav class="nav-menu-line">
+          <ul class="nav-list">
+            <li class="nav-list__item">
+              <a href="#" class="nav-list__link">Завтрак</a>
+            </li>
+            <li class="nav-list__item">
+              <a href="#" class="nav-list__link">Пиццы</a>
+            </li>
+            <li class="nav-list__item">
+              <a href="#" class="nav-list__link">Комбо</a>
+            </li>
+          </ul>
+          <button class="btn-reset header__order">Заказать</button>
+        </nav>
+      </div>
+
+      <div class="storyboard">
+        <div class="swiper swiper__storyboard">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide storyboard__slide popup__link" data-popupId="storyboard">
+              <div class="storyboard-bg">
+                <picture>
+                  <source srcset="./img/story-prev-1.webp" type="image/webp">
+                  <img loading="lazy" src="./img/story-prev-1.jpg" width="" height="" alt="Фон">
+                </picture>
+              </div>
+            </div>
+            <div class="swiper-slide storyboard__slide popup__link" data-popupId="storyboard">
+              <div class="storyboard-bg">
+                <picture>
+                  <source srcset="./img/story-prev-2.webp" type="image/webp">
+                  <img loading="lazy" src="./img/story-prev-2.jpg" width="" height="" alt="Фон">
+                </picture>
+              </div>
+            </div>
+            <div class="swiper-slide storyboard__slide popup__link" data-popupId="storyboard">
+              <div class="storyboard-bg">
+                <picture>
+                  <source srcset="./img/story-prev-3.webp" type="image/webp">
+                  <img loading="lazy" src="./img/story-prev-3.jpg" width="" height="" alt="Фон">
+                </picture>
+              </div>
+            </div>
+            <div class="swiper-slide storyboard__slide popup__link" data-popupId="storyboard">
+              <div class="storyboard-bg">
+                <picture>
+                  <source srcset="./img/story-prev-4.webp" type="image/webp">
+                  <img loading="lazy" src="./img/story-prev-4.jpg" width="" height="" alt="Фон">
+                </picture>
+              </div>
+            </div>
+            <div class="swiper-slide storyboard__slide popup__link" data-popupId="storyboard">
+              <div class="storyboard-bg">
+                <picture>
+                  <source srcset="./img/story-prev-5.webp" type="image/webp">
+                  <img loading="lazy" src="./img/story-prev-5.jpg" width="" height="" alt="Фон">
+                </picture>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="storyboard-btn next">
+          <svg>
+            <use xlink:href="img/sprite.svg#arrow"></use>
+          </svg>
+        </div>
+        <div class="storyboard-btn prev">
+          <svg>
+            <use xlink:href="img/sprite.svg#arrow"></use>
+          </svg>
+        </div>
+      </div>
+
+      <div class="often-order">
+        <div class="swiper swiper__often-order">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide often-order__slide">
+              <div class="often-order__slide-img">
+                <picture>
+                  <source srcset="./img/foto.webp" type="image/webp">
+                  <img loading="lazy" src="./img/foto.png" class="image" width="90" height="90" alt="Часто заказывают">
+                </picture>
+              </div>
+              <div class="often-order__slide-text">
+                <p class="often-order__name">Пепперони фреш</p>
+                <p class="often-order__cost">от 319 ₽</p>
+              </div>
+            </div>
+            <div class="swiper-slide often-order__slide">
+              <div class="often-order__slide-img">
+                <picture>
+                  <source srcset="./img/foto.webp" type="image/webp">
+                  <img loading="lazy" src="./img/foto.png" class="image" width="90" height="90" alt="Часто заказывают">
+                </picture>
+              </div>
+              <div class="often-order__slide-text">
+                <p class="often-order__name">3 пиццы</p>
+                <p class="often-order__cost">1 299 ₽</p>
+                <p class="often-order__cost-old">1 677 ₽</p>
+              </div>
+            </div>
+            <div class="swiper-slide often-order__slide">
+              <div class="often-order__slide-img">
+                <picture>
+                  <source srcset="./img/foto.webp" type="image/webp">
+                  <img loading="lazy" src="./img/foto.png" class="image" width="90" height="90" alt="Часто заказывают">
+                </picture>
+              </div>
+              <div class="often-order__slide-text">
+                <p class="often-order__name">2 соуса</p>
+                <p class="often-order__cost">75 ₽</p>
+                <p class="often-order__cost-old">90 ₽</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+         <main class="main">
+         </main>
+         <footer class="footer">
+  <div class="container"></div>
+</footer>
+
+      </div>
+   </body>
+
+</html>
