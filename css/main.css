@@ -1,11 +1,12 @@
 :root {
-  --font-family: "Roboto", sans-serif;
+  --font-family: "Inter", sans-serif;
   --content-width: 1280px;
   --container-offset: 20px;
   --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
   --light-color: #fff;
   --second-color: rgb(255, 105, 0);
   --second-color-hover: rgb(232, 97, 0);
+  --second-color-alpha: rgb(255, 240, 230);
 }
 
 html {
@@ -623,5 +624,105 @@ body.lock {
 
 .swiper-pagination-bullet:has(+ .swiper-pagination-bullet.swiper-pagination-bullet-active) {
   background-color: #fff !important;
+}
+
+.catalog {
+  width: 100%;
+}
+
+.catalog__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.catalog-list {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+  grid-template-columns: repeat(4, 1fr);
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  gap: 60px 30px;
+}
+
+.catalog-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.catalog-item__img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  padding-bottom: 10px;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+.catalog-item__img:hover {
+  padding-top: 10px;
+  padding-bottom: 0;
+}
+
+.catalog-item__text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.catalog-item__title {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.catalog-item__description {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+.catalog-item__buy-block {
+  margin-top: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.catalog-item__cost {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 22px;
+}
+
+.catalog-item__buy-btn {
+  padding: 8px 20px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  color: var(--second-color);
+  background-color: var(--second-color-alpha);
+  border-radius: 100px;
 }
 /*# sourceMappingURL=main.css.map */
