@@ -124,22 +124,55 @@
 </div>
 
   <div class="container">
-    <div class="header__head">
-      <a href="#" class="head__link">Работа в 101 окно</a>
-      <a href="#" class="head__link">О нас</a>
-      <a href="#" class="head__link">Контакты</a>
-    </div>
-    <div class="header__head-border-bottom"></div>
     <div class="header__container">
-      <div class="header__main-block">
-        <div class="header__logo">
+      <div class="mobile__menu" data-menu>
+        <div class="header__head">
+          <button href="tel:+70000000000" class="btn-reset mobile__delivery">
+            <div class="delivery-img">
+              <img src="./img/phone-icon.svg" alt="Телефон" class="img-contain">
+            </div>
+            <div class="delivery-text">
+              <p class="delivery-adress">+7 (000-00) 0-00-00</p>
+              <p class="delivery__subtext">Звонок бесплатный</p>
+            </div>
+          </button>
+          <div class="head__links">
+            <a href="#" class="head__link">Работа в 101 окно</a>
+            <a href="#" class="head__link">О нас</a>
+            <a href="#" class="head__link">Контакты</a>
+          </div>
+          <div class="header__head-border-bottom"></div>
+        </div>
+        <div class="header__main-block">
+          <div class="header__logo">
+            <picture>
+              <source srcset="./img/logo.webp" type="image/webp">
+              <img loading="lazy" src="./img/logo.png" class="img-contain" width="250" height="40" alt="Логотип">
+            </picture>
+          </div>
+          <p class="header__delivery-text">Доставка в <button class="btn-reset select-sity"></button></p>
+          <a href="tel:+70000000000" class="header__phone-number">+7 (000-00) 0-00-00</a>
+          <a href="tel:+70000000000" class="mobile__phone-number">
+            <div class="phone-img">
+              <img src="./img/phone-icon.svg" alt="Телефон" class="img-contain">
+            </div>
+            <div class="phone-text">
+              <p class="phone-number">+7 (000-00) 0-00-00</p>
+              <p class="phone__subtext">Звонок бесплатный</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="mobile__header">
+        <div class="header__logo-mobile">
           <picture>
             <source srcset="./img/logo.webp" type="image/webp">
             <img loading="lazy" src="./img/logo.png" class="img-contain" width="250" height="40" alt="Логотип">
           </picture>
         </div>
-        <p class="header__delivery-text">Доставка в <button class="btn-reset select-sity"></button></p>
-        <a href="tel:+70000000000" class="header__phone-number">+7 (000-00) 0-00-00</a>
+        <button class="burger" aria-label="Открыть меню" aria-expanded="false"  data-burger>
+          <span class="burger__line"></span>
+        </button>
       </div>
       <div class="nav__container">
         <div class="nav-logo">
