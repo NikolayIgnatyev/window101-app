@@ -405,6 +405,7 @@ const swiperStoryFragments = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](
 });
 const swiperOften = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](".swiper__often-order", {
   slidesPerView: 4.5,
+  //надо сделать расчетную функцию
   spaceBetween: 25
 });
 
