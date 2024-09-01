@@ -485,10 +485,24 @@ const swiperStoryFragments = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"](
   }
 });
 const swiperOften = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"](".swiper__often-order", {
-  slidesPerView: 4.5,
-  //надо сделать расчетную функцию
+  slidesPerView: 'auto',
   spaceBetween: 25
 });
+function updateStars(rating) {
+  const stars = document.querySelectorAll('.star-rating .star');
+  stars.forEach(star => {
+    const value = parseFloat(star.getAttribute('data-value'));
+    let fillPercentage = 0;
+    if (value <= rating) {
+      fillPercentage = 100;
+    } else if (value - 1 < rating) {
+      fillPercentage = (rating - (value - 1)) * 100;
+    }
+    star.style.background = `linear-gradient(to right, #fc0 0%, #fc0 ${fillPercentage}%, #ccc ${fillPercentage}%, #ccc 100%)`;
+  });
+}
+const rateValue = document.querySelector('.delivery-time__rate');
+updateStars(rateValue.textContent);
 
 // Подключение анимаций по скроллу
 // import AOS from 'aos';
@@ -505,6 +519,21 @@ const navMenu = document.querySelector('.nav-menu-line');
 navMenu.querySelectorAll('.nav-list__link').forEach(link => {
   const scroll = new (smooth_scroll__WEBPACK_IMPORTED_MODULE_3___default())('a[href*="' + link.getAttribute('href') + '"]');
 });
+window.onscroll = function () {
+  makeHeaderSticky();
+};
+const header = document.querySelector('.header-fixed');
+const placeholder = document.querySelector(".header-placeholder");
+const sticky = header.offsetTop + header.offsetHeight;
+function makeHeaderSticky() {
+  if (window.scrollY > sticky) {
+    placeholder.style.height = header.offsetHeight + "px";
+    header.classList.add("fixed");
+  } else {
+    placeholder.style.height = "0px";
+    header.classList.remove("fixed");
+  }
+}
 
 // Подключение событий свайпа на мобильных
 // import 'swiped-events';
@@ -11314,7 +11343,7 @@ __webpack_require__.r(__webpack_exports__);
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -11328,14 +11357,14 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -11348,7 +11377,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -11360,7 +11389,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 			}
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -11372,12 +11401,12 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 			}
 /******/ 		})();
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -11388,7 +11417,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
