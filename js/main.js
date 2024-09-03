@@ -265,7 +265,7 @@ document.addEventListener("keydown", function (e) {
   }
 })();
 const swiperStoryboardEl = document.querySelector('.swiper__storyboard');
-const delayDefault = 3000;
+const delayDefault = 30000000;
 let swiperStoryboardOpenedSlide;
 let popupStoryes;
 let popupStoryesOpen = false;
@@ -341,7 +341,6 @@ function resetDelay() {
     }
   }
   swiperStory.params.autoplay.delay = activeSwiperStoryDelay;
-  console.log(activeSwiperStoryDelay);
   updateDelay(swiperStory);
 }
 function updateDelay(swiper) {
@@ -477,9 +476,6 @@ const swiperStoryFragments = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"](
     afterInit(swiper) {
       swiper.autoplay.stop();
       swiper.disable();
-    },
-    slideChange(swiper) {
-      console.log(swiper.activeIndex);
     },
     slideChangeTransitionEnd(swiper) {
       resetDelay();
