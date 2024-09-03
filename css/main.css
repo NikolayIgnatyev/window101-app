@@ -959,6 +959,7 @@ body.lock {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  padding: 0 20px;
 }
 
 .story-btn {
@@ -1014,7 +1015,7 @@ body.lock {
 }
 
 .swiper__story {
-  max-width: 95%;
+  max-width: 500px;
   height: 100vh;
   aspect-ratio: 1/1.58;
   padding: 25px 0;
@@ -1032,6 +1033,13 @@ body.lock {
   height: auto;
 }
 
+.btn-close-container {
+  position: absolute;
+  width: 100%;
+  padding: 25px 20px;
+  aspect-ratio: 1/1.58;
+}
+
 .slide__story {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1039,13 +1047,13 @@ body.lock {
   border-radius: 15px;
   overflow: hidden;
   position: relative;
-  height: auto;
+  height: 100%;
 }
 
 .close-storyboard {
   position: absolute;
-  top: 88px;
-  right: 10px;
+  top: 5.5%;
+  right: 2%;
   z-index: 15;
 }
 
@@ -1088,11 +1096,11 @@ body.lock {
 
 .pagination-fragments {
   position: absolute;
-  top: 15px !important;
-  right: 15px;
-  left: 15px !important;
+  top: 2% !important;
+  right: 2%;
+  left: 2% !important;
   z-index: 15;
-  height: 8px;
+  height: 10%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1119,6 +1127,7 @@ body.lock {
   border-radius: 20px;
   opacity: 0.8;
   position: relative;
+  height: 10%;
 }
 
 .swiper-pagination-bullet-active::before {
@@ -1128,7 +1137,7 @@ body.lock {
   left: 0;
   background-color: #fff;
   border-radius: 20px;
-  height: 8px;
+  height: 10%;
   z-index: 20;
   width: var(--width-active-bullet, 0%);
 }
