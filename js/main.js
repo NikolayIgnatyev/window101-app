@@ -336,12 +336,12 @@ function resetDelay() {
       videoDelay += timeVideoMs;
       activeSwiperStoryDelay += videoDelay;
       activeSwiperStory.params.autoplay.delay = videoDelay;
-      updateDelay(activeSwiperStory);
     } else {
       activeSwiperStoryDelay += delayDefault;
     }
   }
   swiperStory.params.autoplay.delay = activeSwiperStoryDelay;
+  console.log(activeSwiperStoryDelay);
   updateDelay(swiperStory);
 }
 function updateDelay(swiper) {
@@ -377,11 +377,12 @@ function closeStoryesAuto() {
   }
 }
 function playVideo() {
-  const activeSlideStory = activeSwiperStory.slides[activeSwiperStory.activeIndex];
-  const videoInSlide = activeSlideStory.querySelector('video');
+  const activeSlideStorySlide = activeSwiperStory.slides[activeSwiperStory.activeIndex];
+  const videoInSlide = activeSlideStorySlide.querySelector('video');
   if (videoInSlide && popupStoryesOpen) {
     videoInSlide.muted = false;
     videoInSlide.currentTime = 0;
+    videoInSlide.play();
   }
 }
 function closeStoryes() {
@@ -396,6 +397,12 @@ function closeStoryes() {
   });
   swiperStory.autoplay.stop();
   swiperStory.disable();
+}
+function updateActiveSlide() {
+  activeSwiperStory.autoplay.stop();
+  activeSwiperStory.slideTo(0);
+  activeSwiperStory.update();
+  activeSwiperStory.autoplay.start();
 }
 const swiperStoryboard = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"](swiperStoryboardEl, {
   slidesPerView: 'auto',
@@ -414,7 +421,8 @@ const swiperStory = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"](".swiper_
   },
   autoplay: {
     delay: delayDefault,
-    stopOnLastSlide: true
+    stopOnLastSlide: true,
+    disableOnInteraction: false
   },
   on: {
     afterInit(swiper) {
@@ -424,10 +432,17 @@ const swiperStory = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"](".swiper_
       getActiveSwiperStory(swiper);
       setBgImg(activeSwiperStory);
     },
+    slideChangeTransitionStart(swiper) {
+      resetDelay();
+    },
     slideChangeTransitionEnd(swiper) {
+      mutedOtherVideos(activeSwiperStory);
       getActiveSwiperStory(swiper);
       setBgImg(activeSwiperStory);
-      resetDelay();
+      playVideo();
+    },
+    slideNextTransitionEnd(swiper) {
+      updateActiveSlide();
       playVideo();
     }
   }
@@ -448,7 +463,8 @@ const swiperStoryFragments = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"](
   allowTouchMove: false,
   speed: 1,
   autoplay: {
-    delay: delayDefault
+    delay: delayDefault,
+    disableOnInteraction: false
   },
   navigation: {
     nextEl: storyFragmentBtnNext,
@@ -461,6 +477,9 @@ const swiperStoryFragments = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"](
     afterInit(swiper) {
       swiper.autoplay.stop();
       swiper.disable();
+    },
+    slideChange(swiper) {
+      console.log(swiper.activeIndex);
     },
     slideChangeTransitionEnd(swiper) {
       resetDelay();
