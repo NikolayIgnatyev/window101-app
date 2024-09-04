@@ -80,25 +80,31 @@ const enableScroll = () => {
   _vars__WEBPACK_IMPORTED_MODULE_0__["default"].bodyEl.removeAttribute('data-position');
   _vars__WEBPACK_IMPORTED_MODULE_0__["default"].htmlEl.style.scrollBehavior = 'smooth';
 };
+const mobileHeader = document.querySelector('.mobile__header');
 (function () {
   const burger = document?.querySelector('[data-burger]');
   const menu = document?.querySelector('[data-menu]');
   const menuItems = document?.querySelectorAll('[data-menu-item]');
   const overlay = document?.querySelector('[data-menu-overlay]');
-  const mobileHeader = document.querySelector('.mobile__header');
   burger?.addEventListener('click', e => {
-    burger?.classList.toggle('burger--active');
-    menu?.classList.toggle('menu--active');
-    mobileHeader.classList.toggle('header--active');
-    getHeaderHeight();
-    if (menu?.classList.contains('menu--active')) {
-      burger?.setAttribute('aria-expanded', 'true');
-      burger?.setAttribute('aria-label', 'Закрыть меню');
-      disableScroll();
+    if (mobileHeader.classList.contains('select-sity-menu__active')) {
+      selectSityMenu.classList.remove('select-sity-menu__active');
+      mobileHeader.classList.remove('select-sity-menu__active');
+      headerMenu.classList.remove('select-sity-menu__active');
     } else {
-      burger?.setAttribute('aria-expanded', 'false');
-      burger?.setAttribute('aria-label', 'Открыть меню');
-      enableScroll();
+      burger?.classList.toggle('burger--active');
+      menu?.classList.toggle('menu--active');
+      mobileHeader.classList.toggle('header--active');
+      getHeaderHeight();
+      if (menu?.classList.contains('menu--active')) {
+        burger?.setAttribute('aria-expanded', 'true');
+        burger?.setAttribute('aria-label', 'Закрыть меню');
+        disableScroll();
+      } else {
+        burger?.setAttribute('aria-expanded', 'false');
+        burger?.setAttribute('aria-label', 'Открыть меню');
+        enableScroll();
+      }
     }
   });
   overlay?.addEventListener('click', () => {
@@ -165,6 +171,7 @@ if (popupLinks.length > 0) {
       if (curentPopup.classList.contains('storyes')) {
         popupStoryes = curentPopup;
         swiperStoryboardOpenedSlide = popupLink;
+        popupStoryesOpen = true;
         swiperStory.enable();
         setDelay();
         swiperStory.slideTo(index);
@@ -195,7 +202,6 @@ function popupOpen(curentPopup) {
       bodyLock();
     }
     curentPopup.classList.add("open");
-    popupStoryesOpen = true;
     curentPopup.addEventListener("click", function (e) {
       if (!e.target.closest(".popup__content")) {
         popupClose(e.target.closest(".popup"));
@@ -206,7 +212,9 @@ function popupOpen(curentPopup) {
 function popupClose(popupActive) {
   let doUnlock = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
   if (unlock) {
-    closeStoryes();
+    if (popupStoryesOpen) {
+      closeStoryes();
+    }
     popupActive.classList.remove("open");
     if (doUnlock) {
       bodyUnLock();
@@ -265,7 +273,7 @@ document.addEventListener("keydown", function (e) {
   }
 })();
 const swiperStoryboardEl = document.querySelector('.swiper__storyboard');
-const delayDefault = 30000000;
+const delayDefault = 1500;
 let swiperStoryboardOpenedSlide;
 let popupStoryes;
 let popupStoryesOpen = false;
@@ -335,9 +343,16 @@ function resetDelay() {
       const timeVideoMs = videoInSlide.duration * 1000;
       videoDelay += timeVideoMs;
       activeSwiperStoryDelay += videoDelay;
-      activeSwiperStory.params.autoplay.delay = videoDelay;
+      if (i == activeSwiperStory.activeIndex) {
+        activeSwiperStory.params.autoplay.delay = videoDelay;
+        acceptDelay(activeSwiperStory);
+      }
     } else {
       activeSwiperStoryDelay += delayDefault;
+      if (i == activeSwiperStory.activeIndex) {
+        activeSwiperStory.params.autoplay.delay = delayDefault;
+        acceptDelay(activeSwiperStory);
+      }
     }
   }
   swiperStory.params.autoplay.delay = activeSwiperStoryDelay;
@@ -345,6 +360,11 @@ function resetDelay() {
 }
 function updateDelay(swiper) {
   swiper.autoplay.stop();
+  swiper.autoplay.start();
+}
+function acceptDelay(swiper) {
+  swiper.autoplay.stop();
+  swiper.update();
   swiper.autoplay.start();
 }
 function mutedOtherVideos(swiper) {
@@ -398,6 +418,7 @@ function closeStoryes() {
   swiperStory.disable();
 }
 function updateActiveSlide() {
+  getActiveSwiperStory(swiperStory);
   activeSwiperStory.autoplay.stop();
   activeSwiperStory.slideTo(0);
   activeSwiperStory.update();
@@ -430,6 +451,8 @@ const swiperStory = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"](".swiper_
     update(swiper) {
       getActiveSwiperStory(swiper);
       setBgImg(activeSwiperStory);
+      resetDelay();
+      playVideo();
     },
     slideChangeTransitionStart(swiper) {
       resetDelay();
@@ -440,7 +463,7 @@ const swiperStory = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"](".swiper_
       setBgImg(activeSwiperStory);
       playVideo();
     },
-    slideNextTransitionEnd(swiper) {
+    slideNextTransitionStart(swiper) {
       updateActiveSlide();
       playVideo();
     }
@@ -566,6 +589,89 @@ function makeHeaderSticky() {
 // };
 
 // validateForms('.form-1', rules1, afterForm);
+
+const list = document.querySelector(".popup-sityes-list");
+const groups = Array.from(list.children); // Получаем все .sityes-group элементы
+const computedStyle = window.getComputedStyle(list);
+const columns = computedStyle.gridTemplateColumns.split(" ").length;
+const itemsPerColumn = Math.ceil(groups.length / columns); // Элементов в каждом столбце
+
+// Создаем контейнеры для каждого столбца
+const columnContainers = Array.from({
+  length: columns
+}, () => {
+  const column = document.createElement("div");
+  column.classList.add("column_sityes");
+  list.appendChild(column);
+  return column;
+});
+
+// Распределяем элементы по столбцам
+groups.forEach((group, index) => {
+  const columnIndex = Math.floor(index / itemsPerColumn);
+  columnContainers[columnIndex].appendChild(group);
+});
+const parentContainer = document.querySelector('.sityes-list-container');
+const container = document.querySelector('.popup-sityes-list');
+function updateShadows() {
+  const scrollTop = container.scrollTop;
+  const scrollHeight = container.scrollHeight;
+  const clientHeight = container.clientHeight;
+
+  // Обновляем прозрачность верхней тени
+  const topOpacity = scrollTop > 0 ? '1' : '0';
+  parentContainer.style.setProperty('--top-shadow-opacity', topOpacity);
+
+  // Обновляем прозрачность нижней тени
+  const bottomOpacity = scrollTop + clientHeight < scrollHeight ? '1' : '0';
+  parentContainer.style.setProperty('--bottom-shadow-opacity', bottomOpacity);
+}
+
+// Обновляем тени при скролле
+container.addEventListener('scroll', updateShadows);
+const parentContainerMobile = document.querySelector('.mobile__sityes-list-container');
+const containerMobile = document.querySelector('.mobile__popup-sityes-list');
+function updateShadowsMobile() {
+  const scrollTop = containerMobile.scrollTop;
+  const scrollHeight = containerMobile.scrollHeight;
+  const clientHeight = containerMobile.clientHeight;
+
+  // Обновляем прозрачность верхней тени
+  const topOpacity = scrollTop > 0 ? '1' : '0';
+  parentContainerMobile.style.setProperty('--top-shadow-opacity', topOpacity);
+
+  // Обновляем прозрачность нижней тени
+  const bottomOpacity = scrollTop + clientHeight < scrollHeight ? '1' : '0';
+  parentContainerMobile.style.setProperty('--bottom-shadow-opacity', bottomOpacity);
+}
+
+// Обновляем тени при скролле
+containerMobile.addEventListener('scroll', updateShadowsMobile);
+
+// Обновляем тени при загрузке страницы
+updateShadowsMobile();
+const mediaQuery = window.matchMedia('(max-width: 978px)');
+const popupSelectSity = document.querySelector('.popup_select-sity');
+// Функция для обработки изменения медиа-запроса
+function handleMediaChange(e) {
+  if (e.matches) {
+    popupClose(popupSelectSity);
+  }
+}
+
+// Проверяем текущий статус медиа-запроса
+handleMediaChange(mediaQuery);
+
+// Добавляем слушатель для изменения состояния медиа-запроса
+mediaQuery.addEventListener('change', handleMediaChange);
+const editSelectSityBtn = document.querySelector('.mobile__delivery');
+const selectSityMenu = document.querySelector('.mobile__select-sity-menu');
+const headerMenu = document.querySelector('.mobile__menu');
+editSelectSityBtn.addEventListener('click', () => {
+  selectSityMenu.classList.add('select-sity-menu__active');
+  mobileHeader.classList.add('select-sity-menu__active');
+  headerMenu.classList.add('select-sity-menu__active');
+});
 
 /***/ }),
 
