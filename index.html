@@ -126,8 +126,8 @@
 </div>
 
         <div class="popup popup_select-sity" id="select-sity">
-  <div class="popup__body">
-    <div class="popup__content">
+  <div class="popup__body popup_select-sity-body">
+    <div class="popup__content popup_select-sity-content">
       <div class="btn-container">
         <button class="btn-popup-close close__popup"></button>
       </div>
@@ -408,6 +408,59 @@
       </div>
     </div>
   </div>
+</div>
+
+        <div class="popup popup-product-simple" id="popup-product-simple">
+ <div class="popup__body popup-product-simple-body">
+   <div class="popup__content popup-product-simple-content">
+    <div class="btn-container">
+      <button class="btn-popup-close close__popup"></button>
+    </div>
+    <div class="popup-product-simple__img">
+      <picture>
+        <source srcset="./img/card-img-1.webp" type="image/webp">
+        <img loading="lazy" src="./img/card-img-1.jpg" class="img-contain" width="" height="" alt="">
+      </picture>
+    </div>
+    <div class="popup-product-simple__content">
+      <div class="popup-product-simple__head">
+        <div class="popup-product-simple__title">Заголовок</div>
+        <button class="btn-reset popup-product-simple__info-btn tippy-btn">
+          <div class="popup-product-simple__info-img">
+            <img src="./img/info-icon.svg" alt="Справка" class="img-contain">
+          </div>
+          <div class="popup-product-simple__info">
+            <p class="info__title">Подзаловок</p>
+            <div class="info-main-block">
+              <div class="info-item">
+                <p class="info-item__name">Параметр</p>
+                <p class="info-item__value">123 шт.</p>
+              </div>
+              <div class="info-item">
+                <p class="info-item__name">Параметр</p>
+                <p class="info-item__value">123 шт.</p>
+              </div>
+              <div class="info-item">
+                <p class="info-item__name">Параметр</p>
+                <p class="info-item__value">123 шт.</p>
+              </div>
+            </div>
+            <div class="info-item main-item">
+              <p class="info-item__name">Общий параметр</p>
+              <p class="info-item__value">123 шт.</p>
+            </div>
+          </div>
+        </button>
+      </div>
+      <p class="popup-product-simple__count">1 шт, 110 г</p>
+      <p class="popup-product-simple__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit cum impedit tempore quas illum rem corporis eius. Repudiandae, rem maiores voluptatibus ipsum minima totam nulla atque iste praesentium, porro voluptate.</p>
+      <p class="popup-product-simple__count-in-order">1 шт.</p>
+      <div class="btn-fixed-container">
+        <button class="btn-reset popup-product-simple__btn-order">Заказать</button>
+      </div>
+    </div>
+   </div>
+ </div>
 </div>
 
          <header class="header">
@@ -896,7 +949,7 @@
     <div class="catalog__container">
       <h2 class="section-title">Окна</h2>
       <div class="catalog-list">
-        <a class="catalog-item">
+        <a class="catalog-item popup__link" data-popupId="popup-product-simple">
           <div class="catalog-item__img">
             <picture>
               <source srcset="./img/card-img-1.webp" type="image/webp">
@@ -1018,7 +1071,7 @@
     <div class="catalog__container">
       <h2 class="section-title">Створки</h2>
       <div class="catalog-list">
-        <a class="catalog-item">
+        <a class="catalog-item popup__link" data-popupId="popup-product-simple">
           <div class="catalog-item__img">
             <picture>
               <source srcset="./img/card-img-1.webp" type="image/webp">
@@ -1140,7 +1193,7 @@
     <div class="catalog__container">
       <h2 class="section-title">Ручки</h2>
       <div class="catalog-list">
-        <a class="catalog-item">
+        <a class="catalog-item popup__link" data-popupId="popup-product-simple">
           <div class="catalog-item__img">
             <picture>
               <source srcset="./img/card-img-1.webp" type="image/webp">
@@ -1262,7 +1315,7 @@
     <div class="catalog__container">
       <h2 class="section-title">Услуги</h2>
       <div class="catalog-list">
-        <a class="catalog-item">
+        <a class="catalog-item popup__link" data-popupId="popup-product-simple">
           <div class="catalog-item__img">
             <picture>
               <source srcset="./img/card-img-1.webp" type="image/webp">
@@ -1384,7 +1437,7 @@
     <div class="catalog__container">
       <h2 class="section-title">Акции</h2>
       <div class="catalog-list">
-        <a class="catalog-item">
+        <a class="catalog-item popup__link" data-popupId="popup-product-simple">
           <div class="catalog-item__img">
             <picture>
               <source srcset="./img/card-img-1.webp" type="image/webp">
